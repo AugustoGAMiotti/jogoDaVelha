@@ -1,0 +1,25 @@
+<html>
+    <body>
+        <style>
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+        </style>
+        <h3>
+            Jogo da velha
+        </h3>
+        <div id="board">
+            
+        </div>
+        <script>
+            const game = document.querySelector('#board')
+            game.innerHTML = ''
+            for(let i = 0; i < 9; i++){
+                game.innerHTML += `<button>${i}</button>` //
+            }
+        </script>
+    </body>
+</html>

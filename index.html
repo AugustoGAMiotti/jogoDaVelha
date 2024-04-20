@@ -1,25 +1,112 @@
 <html>
-    <body>
-        <style>
-            body{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
+
+<body>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #board {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            background-color: #daf3ea;
+            border-radius: 5px;
+        }
+
+        .buttonBoard {
+            background-color: #85e6c0;
+            margin: 10px;
+            border: 0px;
+            height: 100px;
+            width: 100px;
+            border-radius: 5px;
+            font-size: 30px;
+            color: #daf3ea;
+        }
+    </style>
+    <h3>
+        Jogo da velha
+    </h3>
+    <div id="board">
+
+    </div>
+    <label id="CountX">
+        Contador X: 0
+    </label>
+    <label id="CountY">
+        Contador O: 0
+    </label>
+    <script>
+        let plays = [
+            '', '', '',
+            '', '', '',
+            '', '', ''
+        ]
+        const game = document.querySelector('#board')
+        play = 0
+        avaliableGame = 'true'
+        if (avaliableGame = 'true') {
+            function PlayerMove(index) {
+                
+                if (plays[index] == '') {
+                    if (play == 0) {
+                        count()
+                        plays[index] = 'X'
+                        playMaker()
+                        play = 1
+                    }
+                    else {
+                        count()
+                        plays[index] = 'O'
+                        playMaker()
+                        play = 0
+                    }
+                }
+                
             }
-        </style>
-        <h3>
-            Jogo da velha
-        </h3>
-        <div id="board">
-            
-        </div>
-        <script>
-            const game = document.querySelector('#board')
+
+            function verifySquares(c1, c2, c3){
+                return plays[c1] != '' && plays[c2] != '' && plays[c3] != ''
+                plays[c1] == plays[c2] && plays[c2] == plays[c3]
+            }
+            function winner(){
+                verifySquares(0,1,2)
+            }
+        }
+        function playMaker() {
             game.innerHTML = ''
-            for(let i = 0; i < 9; i++){
-                game.innerHTML += `<button>${i}</button>` //
+            for (let i = 0; i < 9; i++) {
+                game.innerHTML += `<button 
+                    class="buttonBoard" 
+                    onClick=PlayerMove(${i})
+                    >` + plays[i] + '</button>'
             }
-        </script>
-    </body>
+        }
+        playMaker()
+        /*
+        countX = 0
+        countY = 0
+
+        function count() {
+                    if(play == 0){
+                        countX = countX + index
+                        let label = document.querySelector("#CountX")
+                        label.innerText = "Contador X: " + countX
+                    }
+                    else{
+                        countY = countY + index
+                        let label = document.querySelector("#CountY")
+                        label.innerText = "Contador Y: " + countY
+                    } 
+                }
+        if(countX == 3 || countX == 12 || countX == 21 || countX == 9 || countX == 13 || countX == 15){
+
+                }
+        */
+    </script>
+</body>
+
 </html>

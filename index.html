@@ -69,8 +69,8 @@
             }
 
             function verifySquares(c1, c2, c3){
-                return plays[c1] != '' && plays[c2] != '' && plays[c3] != ''
-                plays[c1] == plays[c2] && plays[c2] == plays[c3]
+                return (plays[c1] != '' && plays[c2] != '' && plays[c3] != '' &&
+                plays[c1] == plays[c2] && plays[c2] == plays[c3])
             }
             function winner(){
                 verifySquares(0,1,2)

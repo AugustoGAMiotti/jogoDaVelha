@@ -30,14 +30,9 @@
     <h3>
         Jogo da velha
     </h3>
-    <div id="board">
-
-    </div>
-    <label id="CountX">
-        Contador X: 0
-    </label>
-    <label id="CountY">
-        Contador O: 0
+    <div id="board"></div>
+    <label id="status">
+       Vez do jogador X
     </label>
     <script>
         let plays = [
@@ -46,6 +41,7 @@
             '', '', ''
         ]
         const game = document.querySelector('#board')
+        const status = document.querySelector('#status')
         play = 0
         avaliableGame = 'true'
         if (avaliableGame = 'true') {
@@ -53,29 +49,48 @@
                 
                 if (plays[index] == '') {
                     if (play == 0) {
-                        count()
                         plays[index] = 'X'
                         playMaker()
                         play = 1
+                        status.innerHTML = `Vez do jogador O`
                     }
                     else {
-                        count()
                         plays[index] = 'O'
                         playMaker()
                         play = 0
+                        status.innerHTML = `Vez do jogador X`
                     }
+
+                    
                 }
-                
+                winner()
+                if((play == 0) && (avaliableGame == false)){
+                    status.innerHTML = `Jogador X venceu`
+                }else if((play == 1) && (avaliableGame == false)){
+                    status.innerHTML = `Jogador O venceu`
+                }else{
+                    status.innerHTML = `Velha`
+                }
             }
 
             function verifySquares(c1, c2, c3){
-                return (plays[c1] != '' && plays[c2] != '' && plays[c3] != '' &&
+                let ganhou = 
+                (plays[c1] != '' && plays[c2] != '' && plays[c3] != '' &&
                 plays[c1] == plays[c2] && plays[c2] == plays[c3])
+
+                if(ganhou)
+                status.innerHTML = `Jogador ${plays[c1]} Ganhou`
+
+                return ganhou
             }
             function winner(){
-                verifySquares(0,1,2)
-                avaliableGame = 'false'
-                alert('fim de jogo')
+                if((verifySquares(0,1,2)) || (verifySquares(0,3,6)) || (verifySquares(0,4,8))
+                || (verifySquares(3,4,5)) || (verifySquares(6,7,8)) || (verifySquares(1,4,7))
+                || (verifySquares(2,5,8)) || (verifySquares(2,4,6))){
+                    //status.innerHTML = `fim de jogo`
+                    avaliableGame = 'false'
+                    alert('fim de jogo')
+                }
             }
         }
         function playMaker() {
@@ -88,32 +103,6 @@
             }
         }
         playMaker()
-        /*
-        countX = 0
-        countO = 0
-        indexX
-        indexY
-        unico = 0
-        function count() {
-                    if(play == 0){
-                        countX = countX + index
-                        let label = document.querySelector("#CountX")
-                        label.innerText = "Contador X: " + countX
-                        if((index == 0 || index == 3 || index == 6 || index == 1 || index == 2) && unico == 0){
-                            indexX = index
-                            unico = 1
-                        }
-                    }
-                    else{
-                        countO = countO + index
-                        let label = document.querySelector("#CountY")
-                        label.innerText = "Contador Y: " + countY
-                    } 
-                }
-        if(countX == 3 || countX == 12 || countX == 21 || countX == 9 || countX == 13 || countX == 15){
-
-                }
-        */
     </script>
 </body>
 

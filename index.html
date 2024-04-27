@@ -60,15 +60,9 @@
                         play = 0
                         status.innerHTML = `Vez do jogador X`
                     }
-
-
                 }
                 winner()
-
             }
-
-
-
         }
 
         function verifySquares(c1, c2, c3) {
@@ -78,7 +72,6 @@
 
             if (ganhou)
                 status.innerHTML = `Jogador ${plays[c1]} Ganhou`
-            //game.children[c1].style = "background-color:blue"
 
             return ganhou
         }
@@ -87,7 +80,7 @@
                 || (verifySquares(3, 4, 5)) || (verifySquares(6, 7, 8)) || (verifySquares(1, 4, 7))
                 || (verifySquares(2, 5, 8)) || (verifySquares(2, 4, 6))) {
                 avaliableGame = 'false'
-                //alert('fim de jogo')
+                alert('fim de jogo')
             }
             if (play == 1) {
                 'Jogador X ganhou'
